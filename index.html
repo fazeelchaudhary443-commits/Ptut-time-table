@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0b1220" />
+<title>PTUT Hub — Student Platform</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div><strong>PTUT Hub</strong><span>Student Platform</span></div>
+    </div>
+    <div class="profile-mini">
+      <div class="avatar">FC</div>
+      <div><strong>Fazeel Chaudhary</strong><span>BS Software Engineering</span></div>
+    </div>
+    <nav>
+      <button class="nav-item active" data-page="dashboard">⌂ <span>Dashboard</span></button>
+      <button class="nav-item" data-page="timetable">▦ <span>Timetable</span></button>
+      <button class="nav-item" data-page="tasks">✓ <span>Tasks</span><b id="taskBadge">3</b></button>
+      <button class="nav-item" data-page="exams">◷ <span>Exams</span></button>
+      <button class="nav-item" data-page="announcements">◉ <span>Announcements</span></button>
+      <button class="nav-item" data-page="profile">◎ <span>Profile</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="campus-card"><span>Campus</span><strong>PTUT Lahore</strong><small>Township Campus</small></div>
+      <button class="logout" onclick="showToast('Demo mode: logout is disabled')">↪ Logout</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="menu" id="menuBtn">☰</button>
+      <div><span class="eyebrow">MONDAY, 5 OCTOBER 2026</span><h1 id="pageTitle">Good afternoon, Fazeel 👋</h1></div>
+      <div class="top-actions"><button class="icon-btn" onclick="showToast('No new notifications')">🔔<i></i></button><div class="top-avatar">FC</div></div>
+    </header>
+
+    <section id="dashboard" class="page active-page">
+      <div class="hero-grid">
+        <div class="next-card">
+          <div class="card-head"><span>UP NEXT</span><span class="live-dot">● 42 min</span></div>
+          <div class="next-main"><div class="subject-icon">C++</div><div><h2>Object Oriented Programming</h2><p>Software Engineering Technology · Semester 1</p></div></div>
+          <div class="next-meta"><span>🕙 10:00 AM — 11:30 AM</span><span>⌖ Lab 03</span><span>👨‍🏫 Dr. Ahmed</span></div>
+        </div>
+        <div class="stat-card"><span>ATTENDANCE</span><strong>87%</strong><div class="progress"><i style="width:87%"></i></div><small>Looking good — keep it above 80%</small></div>
+      </div>
+      <div class="section-title"><div><span class="eyebrow">YOUR DAY</span><h2>Today's schedule</h2></div><button class="text-btn" onclick="navigate('timetable')">View full timetable →</button></div>
+      <div class="today-list" id="todayList"></div>
+      <div class="two-col">
+        <div class="panel"><div class="panel-title"><h3>Tasks</h3><button class="text-btn" onclick="navigate('tasks')">View all</button></div><div id="dashboardTasks"></div></div>
+        <div class="panel"><div class="panel-title"><h3>Latest announcements</h3><button class="text-btn" onclick="navigate('announcements')">View all</button></div><div id="dashboardAnnouncements"></div></div>
+      </div>
+    </section>
+
+    <section id="timetable" class="page"><div class="section-title"><div><span class="eyebrow">ACADEMIC SCHEDULE</span><h2>Weekly timetable</h2></div><button class="primary" onclick="showToast('Timetable editor will be connected to the admin panel in the next build')">+ Add class</button></div><div class="week-tabs"><button class="active">MON</button><button>TUE</button><button>WED</button><button>THU</button><button>FRI</button><button>SAT</button></div><div class="schedule-board" id="scheduleBoard"></div></section>
+
+    <section id="tasks" class="page"><div class="section-title"><div><span class="eyebrow">PRODUCTIVITY</span><h2>Tasks & assignments</h2></div><button class="primary" onclick="addTask()">+ Add task</button></div><div class="filter-row"><button class="filter active">All</button><button class="filter">Today</button><button class="filter">Upcoming</button><button class="filter">Completed</button></div><div class="task-grid" id="taskPage"></div></section>
+
+    <section id="exams" class="page"><div class="section-title"><div><span class="eyebrow">EXAM CALENDAR</span><h2>Upcoming exams</h2></div></div><div class="exam-grid" id="examGrid"></div></section>
+
+    <section id="announcements" class="page"><div class="section-title"><div><span class="eyebrow">PTUT CAMPUS</span><h2>Announcements</h2></div><button class="primary" onclick="showToast('Only authorized admins can publish announcements')">+ New</button></div><div class="announcement-list" id="announcementPage"></div></section>
+
+    <section id="profile" class="page"><div class="section-title"><div><span class="eyebrow">ACCOUNT</span><h2>My profile</h2></div></div><div class="profile-panel"><div class="big-avatar">FC</div><div class="profile-fields"><label>Full name<input value="Fazeel Chaudhary" /></label><label>University<input value="Punjab Tianjin University of Technology" disabled /></label><label>Program<input value="Software Engineering Technology" /></label><label>Semester<input value="1" /></label><label>Section<input value="A" /></label><button class="primary" onclick="showToast('Profile saved locally')">Save changes</button></div></div></section>
+
+    <footer>PTUT Hub · Student productivity platform · Demo build</footer>
+  </main>
+</div>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
